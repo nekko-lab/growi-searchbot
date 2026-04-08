@@ -19,7 +19,6 @@ class GrowiClient:
               async with session.get(apiEndPoint,params=params) as res:
                     data = await res.json()
                     pages = data["pages"]
-                    print(f"page: {params['page']}, 取得件数: {len(pages)}")
                     for page in pages:
                         if keyword in page["path"]:
                             results.append({
