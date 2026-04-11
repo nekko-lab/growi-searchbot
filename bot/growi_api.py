@@ -1,4 +1,5 @@
 import aiohttp
+from urllib.parse import quote
 class GrowiClient:
     def __init__(self,url: str,access_token: str):
         self.url = url
@@ -8,7 +9,7 @@ class GrowiClient:
         #エンドポイントの作成
         apiEndPoint = f'{self.url}/_api/v3/pages/list'
         params = {
-            'access_token': self.access_token,
+            'access_token': (self.access_token),
             'path': '/',
             'page': 1,
         }
@@ -23,7 +24,7 @@ class GrowiClient:
                         if keyword in page["path"]:
                             results.append({
                                 "path": page["path"],
-                                "url": f"{self.url}{page['path']}",
+                                "url": f"{self.url}{quote(page['path'])}",
                             })
                     if len(pages) < 20:
                         break
