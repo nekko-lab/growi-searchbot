@@ -13,7 +13,9 @@ intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
+
 @tree.command(name="search_title", description="Growiのタイトルにその内容が含まれているかどうかを検索します")
+
 async def title_search(interaction: discord.Interaction, keyword: str):
     
     await interaction.response.send_message(f"{keyword} で検索中...")
@@ -29,7 +31,9 @@ async def title_search(interaction: discord.Interaction, keyword: str):
         message += f"...他 {len(results) - 5} 件"
     await interaction.followup.send(message)
 
+
 @tree.command(name="search_text", description="Growiの本文に単語が含まれているか確認します(時間がかかります)")
+
 async def text_seatch(interaction: discord.Interaction, keyword: str):
     
     await interaction.response.send_message(f"{keyword} で検索中...")
